@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta name="description" content="A responsive, frontend-only client portal CRM demo with projects, documents, support tickets, invoices, and messaging.">
+  <title>Orbit Client Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Orbit home">
+        <span class="brand-mark"><i class="fa-solid fa-orbit"></i></span>
+        <span>orbit<span class="brand-light">.portal</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><i class="fa-solid fa-grip"></i><span>Overview</span></a>
+        <a class="nav-link" href="#projects" data-page="projects"><i class="fa-solid fa-layer-group"></i><span>Projects</span><span class="nav-count" id="navProjectCount">4</span></a>
+        <a class="nav-link" href="#documents" data-page="documents"><i class="fa-regular fa-folder-open"></i><span>Documents</span></a>
+        <a class="nav-link" href="#support" data-page="support"><i class="fa-regular fa-circle-question"></i><span>Support</span><span class="nav-dot"></span></a>
+        <a class="nav-link" href="#invoices" data-page="invoices"><i class="fa-regular fa-credit-card"></i><span>Invoices</span></a>
+        <a class="nav-link" href="#messages" data-page="messages"><i class="fa-regular fa-comments"></i><span>Messages</span></a>
+      </nav>
+      <div class="workspace-label management-label">ACCOUNT</div>
+      <nav class="side-nav">
+        <a class="nav-link" href="#profile" data-page="profile"><i class="fa-regular fa-user"></i><span>My profile</span></a>
+        <a class="nav-link admin-only" href="#admin" data-page="admin"><i class="fa-solid fa-sliders"></i><span>Admin console</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+          <strong>Need a hand?</strong>
+          <p>Our team is one message away.</p>
+          <button class="btn btn-help" data-action="new-ticket">Contact support <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <button class="profile-mini" id="userMenuButton" aria-label="Open account menu">
+          <span class="avatar avatar-blue" id="sidebarAvatar">JD</span>
+          <span class="mini-info"><strong id="sidebarName">Jordan Davis</strong><small id="sidebarRole">Client account</small></span>
+          <i class="fa-solid fa-ellipsis"></i>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="mobileMenu" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+        <div class="breadcrumbs"><span>Workspace</span><i class="fa-solid fa-chevron-right"></i><strong id="breadcrumbPage">Overview</strong></div>
+        <div class="topbar-actions">
+          <label class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" type="search" placeholder="Search anything..." aria-label="Search portal"><kbd>⌘ K</kbd></label>
+          <button class="icon-button theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+          <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span></span></button>
+          <button class="top-avatar" id="topAvatar" aria-label="Open profile">JD</button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page-section active" id="page-dashboard">
+          <div class="welcome-row">
+            <div><div class="eyebrow"><span class="live-dot"></span> YOUR CLIENT WORKSPACE</div><h1>Good morning, <span id="welcomeName">Jordan</span> <span class="wave">✦</span></h1><p class="page-subtitle">Here’s what’s happening with your projects today.</p></div>
+            <div class="welcome-actions"><span class="date-pill" id="todayDate"><i class="fa-regular fa-calendar"></i> Today</span><button class="btn btn-primary" data-action="new-ticket"><i class="fa-solid fa-plus"></i> New request</button></div>
+          </div>
+          <div class="hero-banner">
+            <div class="hero-copy"><span class="hero-kicker">PROJECT SPOTLIGHT</span><h2>Your next big milestone<br>is just around the corner.</h2><p>Website Revamp is moving ahead of schedule. Your team has completed 78% of the planned work.</p><button class="hero-link" data-action="open-project" data-id="101">Explore project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+            <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="art-window"><div class="window-top"><i></i><i></i><i></i><span>project_progress.fig</span></div><div class="art-content"><div class="art-line wide"></div><div class="art-line"></div><div class="art-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="art-tag"><i class="fa-solid fa-check"></i> On track</div></div></div><div class="floating-check"><i class="fa-solid fa-check"></i></div></div>
+          </div>
+          <div class="section-heading"><div><h2>At a glance</h2><p>Your account activity, all in one place.</p></div><button class="text-button" data-page-link="projects">View all activity <i class="fa-solid fa-arrow-right"></i></button></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-violet"><i class="fa-solid fa-layer-group"></i></span><span class="trend trend-up"><i class="fa-solid fa-arrow-up"></i> 12%</span></div><div class="stat-value" id="statProjects">4</div><div class="stat-label">Active projects</div><div class="stat-foot"><span class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>vs. last month</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-cyan"><i class="fa-regular fa-folder-open"></i></span><span class="stat-note">This month</span></div><div class="stat-value" id="statDocuments">12</div><div class="stat-label">Shared documents</div><div class="stat-foot"><span class="stat-foot-icon"><i class="fa-solid fa-arrow-down"></i></span><span>Always within reach</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-amber"><i class="fa-regular fa-circle-question"></i></span><span class="stat-note">Needs attention</span></div><div class="stat-value" id="statTickets">2</div><div class="stat-label">Open support tickets</div><div class="stat-foot"><span class="status-dot status-orange"></span><span>Average reply: 2.4 hours</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-green"><i class="fa-regular fa-credit-card"></i></span><span class="stat-note">Outstanding</span></div><div class="stat-value" id="statOutstanding">$2,450</div><div class="stat-label">Pending invoices</div><div class="stat-foot"><span class="status-dot status-green"></span><span>Next due Oct 24, 2026</span></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel projects-panel"><div class="panel-header"><div><h3>Recent projects</h3><p>Keep an eye on your team's progress.</p></div><button class="icon-button subtle" data-page-link="projects" aria-label="View projects"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></div><div id="recentProjects" class="recent-project-list"></div></article>
+            <article class="panel activity-panel"><div class="panel-header"><div><h3>Recent activity</h3><p>Latest updates from your workspace.</p></div><button class="text-button" data-action="show-activity">See all</button></div><div id="activityList" class="activity-list"></div></article>
+          </div>
+          <div class="bottom-grid">
+            <article class="panel milestones-panel"><div class="panel-header"><div><h3>Upcoming milestones</h3><p>What's coming up next.</p></div><span class="panel-label">NEXT 14 DAYS</span></div><div id="milestoneList" class="milestone-list"></div></article>
+            <article class="panel account-panel"><div class="panel-header"><div><h3>Your account manager</h3><span class="online-label"><span class="live-dot"></span> Available today</span></div><span class="manager-avatar">AM</span></div><h4>Alex Morgan</h4><p class="manager-role">Senior Client Partner</p><div class="manager-contact"><i class="fa-regular fa-envelope"></i> alex.morgan@orbitdemo.test</div><div class="manager-contact"><i class="fa-solid fa-phone"></i> +1 (555) 014-8820</div><button class="btn btn-outline full-width" data-page-link="messages"><i class="fa-regular fa-paper-plane"></i> Message Alex</button></article>
+          </div>
+        </section>
+
+        <section class="page-section" id="page-projects">
+          <div class="page-title-row"><div><div class="eyebrow">WORK IN PROGRESS</div><h1>Projects</h1><p class="page-subtitle">Track deliverables, timelines, and milestones.</p></div><button class="btn btn-primary admin-only" data-action="add-project"><i class="fa-solid fa-plus"></i> Add project</button></div>
+          <div class="filter-row"><div class="filter-tabs" id="projectFilters"><button class="filter-tab active" data-filter="all">All projects <span id="allProjectCount">4</span></button><button class="filter-tab" data-filter="in-progress">In progress</button><button class="filter-tab" data-filter="review">In review</button><button class="filter-tab" data-filter="completed">Completed</button></div><select id="projectSort" class="select-control" aria-label="Sort projects"><option value="recent">Recently updated</option><option value="progress">Progress</option><option value="name">Name A–Z</option></select></div>
+          <div class="project-grid" id="projectGrid"></div>
+        </section>
+
+        <section class="page-section" id="page-documents">
+          <div class="page-title-row"><div><div class="eyebrow">YOUR FILE LIBRARY</div><h1>Documents</h1><p class="page-subtitle">Find project files, contracts, and shared deliverables.</p></div><label class="btn btn-primary upload-button"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload file<input type="file" id="documentUpload" hidden multiple></label></div>
+          <div class="document-summary"><div><span class="doc-summary-icon"><i class="fa-solid fa-hard-drive"></i></span><span><strong id="docTotalLabel">12 files</strong><small>Stored in this demo workspace</small></span></div><div class="storage-meter"><div class="storage-meter-label"><span>Demo storage used</span><strong>64% of 2 GB</strong></div><div class="meter-track"><span style="width:64%"></span></div></div></div>
+          <div class="document-toolbar"><div class="filter-tabs" id="documentFilters"><button class="filter-tab active" data-filter="all">All files</button><button class="filter-tab" data-filter="pdf">PDFs</button><button class="filter-tab" data-filter="image">Images</button><button class="filter-tab" data-filter="spreadsheet">Spreadsheets</button></div><label class="inline-search"><i class="fa-solid fa-magnifying-glass"></i><input id="documentSearch" placeholder="Find a document..." type="search"></label></div>
+          <div class="panel document-table-panel"><div class="table-scroll"><table class="data-table"><thead><tr><th>NAME</th><th>PROJECT</th><th>SHARED BY</th><th>DATE ADDED</th><th>SIZE</th><th></th></tr></thead><tbody id="documentTable"></tbody></table></div><div class="empty-state hidden" id="documentsEmpty"><i class="fa-regular fa-folder-open"></i><h3>No documents found</h3><p>Try another search or upload a file.</p></div></div>
+          <p class="helper-note"><i class="fa-solid fa-circle-info"></i> Files uploaded here are kept in this browser session/local storage metadata. This frontend demo does not provide secure cloud file storage.</p>
+        </section>
+
+        <section class="page-section" id="page-support">
+          <div class="page-title-row"><div><div class="eyebrow">WE'RE HERE TO HELP</div><h1>Support center</h1><p class="page-subtitle">Get help from the people who know your account.</p></div><button class="btn btn-primary" data-action="new-ticket"><i class="fa-solid fa-plus"></i> Create ticket</button></div>
+          <div class="support-hero"><div><span class="support-eyebrow">ORBIT CLIENT CARE</span><h2>How can we help you today?</h2><p>Submit a request and our support team will get back to you shortly.</p><button class="btn btn-white" data-action="new-ticket">Start a request <i class="fa-solid fa-arrow-right"></i></button></div><div class="support-illustration"><i class="fa-solid fa-headset"></i><span></span><span></span></div></div>
+          <div class="section-heading"><div><h2>Your tickets</h2><p>Follow the status of your support requests.</p></div><select id="ticketFilter" class="select-control"><option value="all">All tickets</option><option value="open">Open</option><option value="in-progress">In progress</option><option value="resolved">Resolved</option></select></div>
+          <div class="panel ticket-panel"><div class="table-scroll"><table class="data-table"><thead><tr><th>TICKET</th><th>SUBJECT</th><th>PRIORITY</th><th>STATUS</th><th>CREATED</th><th></th></tr></thead><tbody id="ticketTable"></tbody></table></div><div class="empty-state hidden" id="ticketsEmpty"><i class="fa-regular fa-circle-check"></i><h3>All clear</h3><p>No tickets match this filter.</p></div></div>
+        </section>
+
+        <section class="page-section" id="page-invoices">
+          <div class="page-title-row"><div><div class="eyebrow">BILLING & PAYMENTS</div><h1>Invoices</h1><p class="page-subtitle">A clear view of your billing and payment history.</p></div><button class="btn btn-outline" id="downloadStatement"><i class="fa-solid fa-download"></i> Export statement</button></div>
+          <div class="billing-stats"><article class="billing-card"><span>Total billed</span><strong id="totalBilled">$18,750.00</strong><small>Across all invoices</small></article><article class="billing-card"><span>Paid to date</span><strong class="green-text" id="paidTotal">$16,300.00</strong><small><i class="fa-solid fa-circle-check"></i> All payments recorded</small></article><article class="billing-card"><span>Outstanding</span><strong id="outstandingTotal">$2,450.00</strong><small><i class="fa-regular fa-clock"></i> 2 invoices awaiting payment</small></article></div>
+          <div class="section-heading"><div><h2>Invoice history</h2><p>Download a copy for your records.</p></div><select id="invoiceFilter" class="select-control"><option value="all">All invoices</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="overdue">Overdue</option></select></div>
+          <div class="panel"><div class="table-scroll"><table class="data-table"><thead><tr><th>INVOICE</th><th>DESCRIPTION</th><th>ISSUED</th><th>DUE DATE</th><th>AMOUNT</th><th>STATUS</th><th></th></tr></thead><tbody id="invoiceTable"></tbody></table></div><div class="empty-state hidden" id="invoicesEmpty"><i class="fa-regular fa-file-lines"></i><h3>No invoices found</h3><p>There are no invoices for this filter.</p></div></div>
+          <p class="helper-note"><i class="fa-solid fa-shield-halved"></i> Demo billing data only. No real payment processing is connected.</p>
+        </section>
+
+        <section class="page-section" id="page-messages">
+          <div class="page-title-row"><div><div class="eyebrow">STAY IN THE LOOP</div><h1>Messages</h1><p class="page-subtitle">A direct line to your account team.</p></div><button class="btn btn-primary" data-action="new-message"><i class="fa-solid fa-pen"></i> New message</button></div>
+          <div class="messages-layout panel"><aside class="conversation-list"><div class="conversation-search"><i class="fa-solid fa-magnifying-glass"></i><input id="conversationSearch" placeholder="Search conversations"></div><div id="conversationItems"></div></aside><div class="conversation-main"><div class="conversation-header"><span class="manager-avatar">AM</span><div><strong>Alex Morgan</strong><small><span class="live-dot"></span> Account manager</small></div><button class="icon-button subtle" aria-label="Conversation options"><i class="fa-solid fa-ellipsis"></i></button></div><div id="messageThread" class="message-thread"></div><form id="messageForm" class="message-composer"><button type="button" class="icon-button subtle" aria-label="Attach file" id="messageAttach"><i class="fa-solid fa-paperclip"></i></button><input id="messageInput" maxlength="600" placeholder="Write a message..." autocomplete="off" required><button class="send-button" aria-label="Send message"><i class="fa-solid fa-arrow-up"></i></button></form></div></div>
+          <p class="helper-note"><i class="fa-solid fa-circle-info"></i> Messaging is simulated locally for this frontend-only project.</p>
+        </section>
+
+        <section class="page-section" id="page-profile">
+          <div class="page-title-row"><div><div class="eyebrow">ACCOUNT SETTINGS</div><h1>My profile</h1><p class="page-subtitle">Manage your personal details and preferences.</p></div><button class="btn btn-primary" id="saveProfile"><i class="fa-solid fa-check"></i> Save changes</button></div>
+          <div class="profile-layout"><div class="panel profile-card"><div class="profile-cover"></div><div class="profile-card-body"><div class="profile-large-avatar" id="profileLargeAvatar">JD</div><h2 id="profileDisplayName">Jordan Davis</h2><p id="profileDisplayRole">Client administrator</p><span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified account</span><div class="profile-card-divider"></div><div class="profile-meta"><span><i class="fa-regular fa-building"></i> Company</span><strong id="profileCompanyLabel">Northstar Studio</strong></div><div class="profile-meta"><span><i class="fa-regular fa-calendar"></i> Client since</span><strong>January 2025</strong></div></div></div>
+            <div class="panel profile-form-panel"><div class="panel-header"><div><h3>Personal information</h3><p>Update your contact details below.</p></div></div><form id="profileForm" class="form-grid"><label class="form-field"><span>Full name</span><input id="profileName" required maxlength="80"></label><label class="form-field"><span>Email address</span><input id="profileEmail" type="email" required maxlength="120"></label><label class="form-field"><span>Company</span><input id="profileCompany" required maxlength="100"></label><label class="form-field"><span>Phone number</span><input id="profilePhone" type="tel" maxlength="30"></label><label class="form-field full-span"><span>Role / Job title</span><input id="profileJob" maxlength="80"></label><label class="form-field full-span"><span>Timezone</span><select id="profileTimezone"><option>Asia/Kolkata (IST)</option><option>America/New_York (EST)</option><option>Europe/London (GMT)</option><option>America/Los_Angeles (PST)</option></select></label><label class="check-field full-span"><input type="checkbox" id="emailUpdates" checked><span><strong>Email notifications</strong><small>Receive project updates and important account alerts.</small></span></label></form></div></div>
+        </section>
+
+        <section class="page-section" id="page-admin">
+          <div class="page-title-row"><div><div class="eyebrow">WORKSPACE MANAGEMENT</div><h1>Admin console</h1><p class="page-subtitle">Manage your demo workspace from one place.</p></div><span class="demo-mode-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Demo mode</span></div>
+          <div class="admin-warning"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Frontend-only simulation</strong><p>Role switching is for demonstration only. There is no real authentication, server, or access control.</p></div></div>
+          <div class="admin-metrics" id="adminMetrics"></div>
+          <div class="admin-tabs"><button class="admin-tab active" data-admin-tab="clients">Clients</button><button class="admin-tab" data-admin-tab="projects">Projects</button><button class="admin-tab" data-admin-tab="tickets">Support tickets</button></div>
+          <div class="panel admin-table-panel"><div class="panel-header"><div><h3 id="adminTableTitle">Client directory</h3><p id="adminTableSubtitle">Client accounts in your workspace.</p></div><button class="btn btn-primary btn-small" id="adminAddButton"><i class="fa-solid fa-plus"></i> Add client</button></div><div class="table-scroll"><table class="data-table"><thead id="adminTableHead"></thead><tbody id="adminTableBody"></tbody></table></div></div>
+          <div class="admin-bottom-grid"><article class="panel"><div class="panel-header"><div><h3>Workspace activity</h3><p>Latest admin events.</p></div></div><div id="adminActivity" class="activity-list compact-activity"></div></article><article class="panel admin-tools"><div class="panel-header"><div><h3>Quick tools</h3><p>Demo workspace controls.</p></div></div><button class="admin-tool" data-action="export-data"><span><i class="fa-solid fa-file-export"></i></span><span><strong>Export workspace data</strong><small>Download a JSON backup of demo records.</small></span><i class="fa-solid fa-chevron-right"></i></button><button class="admin-tool" data-action="reset-data"><span><i class="fa-solid fa-arrow-rotate-left"></i></span><span><strong>Reset demo data</strong><small>Restore the original sample workspace.</small></span><i class="fa-solid fa-chevron-right"></i></button></article></div>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 Orbit Portal <span class="footer-dot">·</span> Built for better client relationships</span><span><i class="fa-solid fa-lock"></i> Demo workspace <span class="footer-dot">·</span> <a href="#profile" data-page="profile">Privacy & settings</a></span></footer>
+    </main>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><div><span class="modal-eyebrow">ORBIT WORKSPACE</span><h2 id="modalTitle">Create request</h2></div><button class="icon-button subtle" id="modalClose" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button></div><div id="modalBody"></div></section></div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
